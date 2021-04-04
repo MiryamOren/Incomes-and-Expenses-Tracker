@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import TransactionForm from '../TransactionForm'
+import {formatDate} from '../../helperFunctions'
 
 const Page1 = ({userId, API}) => {
   const [acceptMsg, setAcceptMsg] = useState('');
@@ -12,7 +13,7 @@ const Page1 = ({userId, API}) => {
     amount:"",
     description:"",
     category:"",
-    date:"",
+    date: formatDate(new Date()),
   };
   const postTrans = async (trans, transType) => {
     console.log('page 1 got new trans:');
