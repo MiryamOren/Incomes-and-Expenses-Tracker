@@ -29,7 +29,7 @@ const App = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Page2">
+          <Route path="/history">
             <Page2 
             API={API}
             userId={userId}
