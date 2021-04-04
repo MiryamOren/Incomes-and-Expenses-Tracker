@@ -9,6 +9,9 @@ from "react-router-dom";
 import Page1 from './components/pages/Page1'
 import Page2 from './components/pages/Page2'
 const App = () => {
+  const API = "https://60659f61b8fbbd0017566dda.mockapi.io/IncomesAndExpenses/users"
+  const transProps = ['id', 'type', 'amount', 'description', 'category', 'date'];
+  const userId = 1;
   return (
     <Router>
       <div>
@@ -27,10 +30,17 @@ const App = () => {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Page2">
-            <Page2 />
+            <Page2 
+            API={API}
+            userId={userId}
+            transProps={transProps}
+            />
           </Route>
           <Route path="/">
-            <Page1 />
+            <Page1 
+            API={API}
+            userId={userId}
+            />
           </Route>
         </Switch>
       </div>
