@@ -21,4 +21,19 @@ function capitalizeFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export { formatDate, getKeyByValue, capitalizeFirstLetter }
+var datesBetween = function(startDate, endDate) {
+    var dates = [],
+        currentDate = startDate,
+        addDays = function(days) {
+          var date = new Date(this.valueOf());
+          date.setDate(date.getDate() + days);
+          return date;
+        };
+    while (currentDate <= endDate) {
+      dates.push(currentDate);
+      currentDate = addDays.call(currentDate, 1);
+    }
+    return dates;
+  };
+
+export { formatDate, getKeyByValue, capitalizeFirstLetter, datesBetween }

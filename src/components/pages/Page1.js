@@ -13,39 +13,40 @@ const Page1 = ({userId, API}) => {
     description:"",
     category:"",
     date: formatDate(new Date()),
-    id:incomeCounter,
   };
 
-  const emptyIncome = {...emptyTrans};
-  emptyIncome.type = "income";
-
-  const emptyExpense = {...emptyTrans};
-  emptyExpense.type = "expense";
-
-  const postTrans = async (trans, transType) => {
-    console.log('page 1 got new trans:');
-    console.log(trans)
+  const postTrans = async (trans) => {
     try{
       const getRes = await axios.get(`${API}/${userId}`);
       const temp = getRes.data;
-      console.log(temp);
-      console.log(trans.type + 's');
       temp[trans.type + 's'].push(trans);
-      const putRes = await axios.put(`${API}/${userId}`, temp);
-      console.log(putRes.data)
-      setAcceptMsg(`The ${trans.type} has successfully absorbed`)
-
-      setTimeout(() => {
-        setAcceptMsg('');
-      }, 3000);
-
-      trans.type === "income"? 
-        setIncomeCounter(incomeCounter + 1) : 
-        setExpenseCounter(expenseCounter + 1);
+      await axios.put(`${API}/${userId}`, temp);
 
     } catch(err){
       console.log(err)
     }
+
+    setAcceptMsg(`The ${trans.type} has successfully absorbed`)
+    trans.type === "income"? 
+        setIncomeCounter(incomeCounter + 1) : 
+        setExpenseCounter(expenseCounter + 1);
+
+      setTimeout(() => {
+        setAcceptMsg('');
+      }, 3000);
+  }
+
+  const newIncome = () => {
+    const emptyIncome = {...emptyTrans};
+    emptyIncome.type = "income";
+    emptyIncome.id = `income${incomeCounter}`;
+    return emptyIncome;
+  }
+  const newExpense = () => {
+    const emptyExpense = {...emptyTrans};
+    emptyExpense.type = "expense";
+    emptyExpense.id = `expense${expenseCounter}`;
+    return emptyExpense;
   }
 
   return (
@@ -57,13 +58,13 @@ const Page1 = ({userId, API}) => {
         ||
         <div>
           <TransactionForm
-            trans = {emptyIncome}
+            trans = {newIncome()}
             title="New Income"
             func={postTrans}
             btnTxt="+"
           />
           <TransactionForm
-            trans = {emptyExpense}
+            trans = {newExpense()}
             title="New Expense"
             func={postTrans}
             btnTxt="+"
@@ -74,5 +75,4 @@ const Page1 = ({userId, API}) => {
     </div>
   );
 }
-// props: title, id, amount, description, category, date, func
 export default Page1;

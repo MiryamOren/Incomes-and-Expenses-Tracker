@@ -1,28 +1,70 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
-import { ResponsiveBar } from '@nivo/bar'
+import BarChart from '../BarChart'
+import {formatDate, datesBetween} from '../../helperFunctions'
 
 const Page3 = ({ API, userId }) => {
-  const styles = {
-    fontFamily: "sans-serif",
-    textAlign: "center"
-  };
-  
-  const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 }
-  ];
+  const [userObj, setUserObj] = useState(null);
+  const [chartRange, setChartRange] = 
+    useState({startDate: '2021-03-05', endDate: formatDate(new Date())})
+  const [dataType, setDataType] = useState('expenses');
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get(`${API}/${userId}`);
+        setUserObj(res.data);
+      } catch(err){
+        console.log(err)
+      }
+    }
+    getData()
+  }, [])
+
+  useEffect(() => {
+    if (userObj) {
+      const transactions = userObj[dataType];
+      const filteredTransactions = transactions.filter(trans => ((trans.date >= chartRange.startDate) && (trans.date <= chartRange.endDate)));
+      const dates = datesBetween(new Date(chartRange.startDate), new Date(chartRange.endDate));
+      const datesWithData = dates.map(date => {
+        const sum = filteredTransactions
+          .filter(trans => Date.parse(trans.date) === Date.parse(date))
+          .reduce((sum, currentValue) => sum + currentValue, 0);
+        return {amount: sum, date: date}
+      });
+      console.log('datesWithData');
+      console.log(datesWithData);
+      setData(datesWithData)
+    }
+  }, [userObj, chartRange, dataType]);
 
   return (
-    <div style={styles}>
-    <h1>Nivo basic demo</h1>
-    <div style={{ height: "400px" }}>
-      <ResponsiveBar data={data} keys={["earnings"]} indexBy="quarter" />
+    <div>
+    <h1>{`${dataType} from ${chartRange.startDate} to ${chartRange.endDate}`}</h1>
+    <button onClick={() => setDataType('incomes')}>incomes</button>
+    <button onClick={() => setDataType('expenses')}>expenses</button>
+      <label>from</label>
+      <input 
+        type="date" 
+        value={chartRange.startDate}
+        onChange={(e) => setChartRange({...{startDate: e.target.value, endDate: chartRange.endDate}})}
+      />
+      <label>to</label>
+      <input 
+        type="date" 
+        max={formatDate(new Date())} 
+        value={chartRange.endDate}
+        onChange={(e) => setChartRange({...{startDate: chartRange.startDate, endDate: e.target.value}})}
+      />
+      <BarChart 
+        data={data}
+        keys={["amount"]} 
+        indexBy="date"
+      />
     </div>
-  </div>
   );
 }
 

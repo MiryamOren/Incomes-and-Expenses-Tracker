@@ -9,9 +9,9 @@ const TransactionCard = ({trans, editFunc, deleteFunc}) => {
     const tds = ['amount', 'description', 'category', 'date'].map(prop => {
       if (prop === 'date'){
         const date = trans[prop].toString().split('-').reverse().join('/');
-        return <td key={trans[prop]}>{date}</td>
+        return <td key={prop}>{date}</td>
       }
-      return <td key={trans[prop]}>{trans[prop]}</td>
+      return <td key={prop}>{trans[prop]}</td>
     })
     return tds;
   }                          
@@ -21,7 +21,12 @@ const TransactionCard = ({trans, editFunc, deleteFunc}) => {
       {card()}
       <td>
         <button
-          onClick={() => editFunc(trans)}
+          onClick={() => {
+            trans.amount = Math.abs(trans.amount);
+            console.log('1 trans from card:')
+            console.log(trans)
+            editFunc(trans)
+          }}
         >edit</button>
       </td>
       <td>

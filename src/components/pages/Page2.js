@@ -40,11 +40,13 @@ const Page2 = ({userId, API, transProps}) => {
     const temp = getRes.data;
     const origin = temp[newTrans.type + 's'].find(tr => tr.id === newTrans.id);
     const indx = temp[newTrans.type + 's'].indexOf(origin);
+
     if (action === "edit"){
       temp[newTrans.type + 's'].splice(indx, 1, newTrans);
     } else if(action === "delete"){
       temp[newTrans.type + 's'].splice(indx, 1);
     }
+    
     await axios.put(`${API}/${userId}`, temp);
     setTransToEdit(null);
   }
@@ -56,7 +58,7 @@ const Page2 = ({userId, API, transProps}) => {
     <table>
       <thead>
       <tr>
-      {headings.map(prop => <th key={prop}>{prop}</th>)}
+      {['amount', 'description', 'category', 'date'].map(prop => <th key={prop}>{prop}</th>)}
       <th></th>
       <th></th>
     </tr>
@@ -65,7 +67,11 @@ const Page2 = ({userId, API, transProps}) => {
         {transactions.map(trans => <TransactionCard 
           key={trans.id}
           trans={trans}
-          editFunc={() => setTransToEdit(trans)}
+          editFunc={(trans) => {
+            console.log('trans from page2');
+            console.log(trans);
+            setTransToEdit(trans);
+          }}
           deleteFunc={() => handelEditAndDelete(trans, 'delete')}
         />)}
       </tbody>
