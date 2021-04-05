@@ -38,7 +38,7 @@ const Page3 = ({ API, userId }) => {
       });
       console.log('datesWithData');
       console.log(datesWithData);
-      setData(datesWithData)
+      setData(datesWithData.filter(obj => obj.amount))
     }
   }, [userObj, chartRange, dataType]);
 
