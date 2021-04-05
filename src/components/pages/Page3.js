@@ -7,8 +7,9 @@ import {formatDate, datesBetween} from '../../helperFunctions'
 
 const Page3 = ({ API, userId }) => {
   const [userObj, setUserObj] = useState(null);
-  const [chartRange, setChartRange] = 
-    useState({startDate: '2021-03-05', endDate: formatDate(new Date())})
+  const [inputRange, setInputRange] = 
+    useState({startDate: '2021-03-05', endDate: formatDate(new Date())});
+  const [chartRange, setChartRange] = useState(inputRange);
   const [dataType, setDataType] = useState('expenses');
   const [data, setData] = useState([]);
 
@@ -32,8 +33,8 @@ const Page3 = ({ API, userId }) => {
       const datesWithData = dates.map(date => {
         const sum = filteredTransactions
           .filter(trans => Date.parse(trans.date) === Date.parse(date))
-          .reduce((sum, currentValue) => sum + currentValue, 0);
-        return {amount: sum, date: date}
+          .reduce((sum, currentTrans) => sum + currentTrans.amount, 0);
+        return {amount: sum === 0? null: sum, date: date.toDateString()}
       });
       console.log('datesWithData');
       console.log(datesWithData);
@@ -49,16 +50,19 @@ const Page3 = ({ API, userId }) => {
       <label>from</label>
       <input 
         type="date" 
-        value={chartRange.startDate}
-        onChange={(e) => setChartRange({...{startDate: e.target.value, endDate: chartRange.endDate}})}
+        value={inputRange.startDate}
+        onChange={(e) => setInputRange({
+          endDate: inputRange.endDate, startDate: e.target.value})}
       />
       <label>to</label>
       <input 
         type="date" 
         max={formatDate(new Date())} 
-        value={chartRange.endDate}
-        onChange={(e) => setChartRange({...{startDate: chartRange.startDate, endDate: e.target.value}})}
+        value={inputRange.endDate}
+        onChange={(e) => setInputRange({
+          startDate: inputRange.startDate, endDate: e.target.value})}
       />
+      <button onClick={() => setChartRange(inputRange)}>Show</button>
       <BarChart 
         data={data}
         keys={["amount"]} 
