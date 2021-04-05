@@ -6,12 +6,12 @@ const TransactionCard = ({trans, editFunc, deleteFunc}) => {
 
   const card = () => {
     trans.amount = trans.type === 'income' ? trans.amount : Math.abs(trans.amount) * (-1);
-    const tds = Object.values(trans).splice(2).map(prop => {
-      if (getKeyByValue(trans, prop) === 'date'){
-        const date = prop.toString().split('-').reverse().join('/');
-        return <td>{date}</td>
+    const tds = ['amount', 'description', 'category', 'date'].map(prop => {
+      if (prop === 'date'){
+        const date = trans[prop].toString().split('-').reverse().join('/');
+        return <td key={trans[prop]}>{date}</td>
       }
-      return <td>{prop}</td>
+      return <td key={trans[prop]}>{trans[prop]}</td>
     })
     return tds;
   }                          

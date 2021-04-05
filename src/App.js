@@ -8,6 +8,7 @@ import {
 from "react-router-dom";
 import Page1 from './components/pages/Page1'
 import Page2 from './components/pages/Page2'
+import Page3 from './components/pages/Page3'
 const App = () => {
   const API = "https://60659f61b8fbbd0017566dda.mockapi.io/IncomesAndExpenses/users"
   const transProps = ['id', 'type', 'amount', 'description', 'category', 'date'];
@@ -17,11 +18,14 @@ const App = () => {
       <div>
         <nav>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
+            <li key={1}>
+              <Link to="/home">Home</Link>
             </li>
-            <li>
+            <li key={2}>
               <Link to="/history">History</Link>
+            </li>
+            <li key={3}>
+              <Link to="/analyze">Analyze</Link>
             </li>
           </ul>
         </nav>
@@ -29,22 +33,33 @@ const App = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+
+        <Route path="/home">
+            <Page1 
+              API={API}
+              userId={userId}
+            />
+          </Route>
+
           <Route path="/history">
             <Page2 
-            API={API}
-            userId={userId}
-            transProps={transProps}
+              API={API}
+              userId={userId}
+              transProps={transProps}
             />
           </Route>
-          <Route path="/">
-            <Page1 
-            API={API}
-            userId={userId}
+
+          <Route path="/analyze">
+            <Page3 
+              API={API}
+              userId={userId}
             />
           </Route>
+
         </Switch>
       </div>
     </Router>
+    
   );
 }
 

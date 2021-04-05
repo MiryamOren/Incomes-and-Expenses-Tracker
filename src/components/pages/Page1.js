@@ -7,14 +7,21 @@ const Page1 = ({userId, API}) => {
   const [acceptMsg, setAcceptMsg] = useState('');
   const [incomeCounter, setIncomeCounter] = useState(0);
   const [expenseCounter, setExpenseCounter] = useState(0);
+
   const emptyTrans = {
-    id:incomeCounter,
-    type:"income",
     amount:"",
     description:"",
     category:"",
     date: formatDate(new Date()),
+    id:incomeCounter,
   };
+
+  const emptyIncome = {...emptyTrans};
+  emptyIncome.type = "income";
+
+  const emptyExpense = {...emptyTrans};
+  emptyExpense.type = "expense";
+
   const postTrans = async (trans, transType) => {
     console.log('page 1 got new trans:');
     console.log(trans)
@@ -50,13 +57,13 @@ const Page1 = ({userId, API}) => {
         ||
         <div>
           <TransactionForm
-            trans = {emptyTrans}
+            trans = {emptyIncome}
             title="New Income"
             func={postTrans}
             btnTxt="+"
           />
           <TransactionForm
-            trans = {emptyTrans}
+            trans = {emptyExpense}
             title="New Expense"
             func={postTrans}
             btnTxt="+"

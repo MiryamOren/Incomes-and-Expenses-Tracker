@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import TransactionCard from '../TransactionCard'
 import TransactionForm from '../TransactionForm'
+import { capitalizeFirstLetter } from '../../helperFunctions'
 
 const Page2 = ({userId, API, transProps}) => {
 
@@ -53,21 +54,26 @@ const Page2 = ({userId, API, transProps}) => {
     <div>
     <p>Page 2 - History</p>
     <table>
+      <thead>
       <tr>
-        {headings.map(prop => <th>{prop}</th>)}
-        <th></th>
-        <th></th>
-      </tr>
+      {headings.map(prop => <th key={prop}>{prop}</th>)}
+      <th></th>
+      <th></th>
+    </tr>
+      </thead>
+      <tbody>
         {transactions.map(trans => <TransactionCard 
+          key={trans.id}
           trans={trans}
           editFunc={() => setTransToEdit(trans)}
           deleteFunc={() => handelEditAndDelete(trans, 'delete')}
-          />)}
+        />)}
+      </tbody>
     </table>
       {transToEdit && 
       <TransactionForm 
         trans={transToEdit}
-        title="edit"
+        title={`Edit ${capitalizeFirstLetter(transToEdit.type)}`}
         btnTxt="confirm"
         func={(trans) => {handelEditAndDelete(trans, 'edit')}}
       />}

@@ -11,7 +11,7 @@ const TransactionForm = ({trans, title, func, btnTxt}) => {
   const inputs = () => {
     const trs = transactionProps.map(transProp => {
       return (
-        <tr>
+        <tr key={transProp[0]}>
           <td>{transProp[0]}</td>
           <td>
             <input
@@ -33,7 +33,9 @@ const TransactionForm = ({trans, title, func, btnTxt}) => {
     <div>
       <h2>{title}</h2>
       <table>
-        {inputs()}
+        <tbody>
+          {inputs()}
+        </tbody>
       </table>
       <button
       onClick={() => func(transaction)}
