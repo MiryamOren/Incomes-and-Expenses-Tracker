@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
+import '../../css/page3.css'
 import BarChart from '../BarChart'
 import {formatDate, datesBetween} from '../../helperFunctions'
 
@@ -43,10 +44,13 @@ const Page3 = ({ API, userId }) => {
   }, [userObj, chartRange, dataType]);
 
   return (
-    <div>
+    <div className="page page3">
     <h1>{`${dataType} from ${chartRange.startDate} to ${chartRange.endDate}`}</h1>
-    <button onClick={() => setDataType('incomes')}>incomes</button>
-    <button onClick={() => setDataType('expenses')}>expenses</button>
+    <div className="page3_type-btns">
+      <button onClick={() => setDataType('incomes')}>incomes</button>
+      <button onClick={() => setDataType('expenses')}>expenses</button>
+    </div>
+    <div className="page3_range-setters">
       <label>from</label>
       <input 
         type="date" 
@@ -63,6 +67,7 @@ const Page3 = ({ API, userId }) => {
           startDate: inputRange.startDate, endDate: e.target.value})}
       />
       <button onClick={() => setChartRange(inputRange)}>Show</button>
+    </div>
       <BarChart 
         data={data}
         keys={["amount"]} 

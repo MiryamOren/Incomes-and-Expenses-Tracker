@@ -1,0 +1,20 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.page{
+  height: calc(100vh - calc(3rem + 5rem));
+  padding: 3rem;
+  background-image: linear-gradient(to bottom right, #D43078 , #FFEF03);
+}
+.icons-author{
+  height: 3rem;
+  background-color: #010A0A;
+  color: #E98B40;
+  padding: 0.3rem;
+}
+.icons-author a{
+  color: #fff;
+}

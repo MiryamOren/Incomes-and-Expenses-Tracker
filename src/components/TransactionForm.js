@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-const TransactionForm = ({trans, title, func, btnTxt}) => {
+import '../css/transForm.css'
+const TransactionForm = ({trans, title, func, btnTxt, className}) => {
   const [transaction, setTransaction] = useState({...trans});
   const [invalidInput, setInvalidInput] = useState(null)
   const transactionProps = [['amount', 'number'],
@@ -14,10 +14,9 @@ const TransactionForm = ({trans, title, func, btnTxt}) => {
   const inputs = () => {
     const trs = transactionProps.map(transProp => {
       return (
-        <tr key={transProp[0]}>
-          <td>{transProp[0]}</td>
-          <td>
-            <input
+        <React.Fragment key={transProp[0]}>
+          <label>{transProp[0]}</label>
+          <input
               type={transProp[1]} 
               value={transProp[0] === 'amount'? Math.abs(transaction[transProp[0]]) : transaction[transProp[0]]}
               onChange={(e) => {
@@ -26,21 +25,18 @@ const TransactionForm = ({trans, title, func, btnTxt}) => {
                 setTransaction({...temp});
               }}
             />
-          </td>
-        </tr>
+        </React.Fragment>
       );
     })
     return trs;
   }
   return(
-    <div>
+    <div className={`trans-form ${className}`}>
       <h2>{title}</h2>
-      <table>
-        <tbody>
+      <div className="trans-form_inputs">
           {inputs()}
-        </tbody>
-      </table>
-      {invalidInput && <p>*invalid input : {invalidInput}</p>}
+        </div>
+      {invalidInput && <p className="invalid-input-msg">*invalid input : {invalidInput}</p>}
       <button
       onClick={() => {
         // validation check
@@ -55,10 +51,6 @@ const TransactionForm = ({trans, title, func, btnTxt}) => {
           setInvalidInput(null);
           func(transaction);
         }
-        console.log('in form, submit. trans is:');
-        
-        console.log(transaction);
-        
       }}
       >{btnTxt}</button>
     </div>

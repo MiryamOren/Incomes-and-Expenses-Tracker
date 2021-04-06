@@ -1,3 +1,4 @@
+import './css/app.css'
 import React, { useState, useEffect, useRef } from 'react';
 import {
   BrowserRouter as Router,
@@ -10,6 +11,7 @@ import Page1 from './components/pages/Page1'
 import Page2 from './components/pages/Page2'
 import Page3 from './components/pages/Page3'
 import NavBar from './components/NavBar'
+
 const App = () => {
   const API = "https://60659f61b8fbbd0017566dda.mockapi.io/IncomesAndExpenses/users"
   const transProps = ['id', 'type', 'amount', 'description', 'category', 'date'];
@@ -24,7 +26,7 @@ const App = () => {
   }
   
   return (
-    <Router>
+    <Router className="app">
       <div>
       <NavBar
       clearFunction={clearFunction}
@@ -65,6 +67,13 @@ const App = () => {
           </Route>
 
         </Switch>
+      </div>
+      <div className="icons-author">
+        Icons made by  
+        <a target="_blank" rel="noreferrer" href="https://www.flaticon.com/authors/payungkead" title="Payungkead"> Payungkead </a> from  
+        <a target="_blank" rel="noreferrer" href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com.</a>
+        {'  '}
+        <a target="_blank" rel="noreferrer" href="https://www.pexels.com/photo/silhouette-of-mountains-1323550/">Photo by Simon Berger from Pexels </a>
       </div>
     </Router>
     

@@ -3,11 +3,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import TransactionForm from '../TransactionForm'
 import {formatDate} from '../../helperFunctions'
+import '../../css/page1.css'
 
 const Page1 = ({userId, API, clearFunc}) => {
   const [acceptMsg, setAcceptMsg] = useState('');
-  // const [incomeCounter, setIncomeCounter] = useState(null);
-  // const [expenseCounter, setExpenseCounter] = useState(null);
 
   const emptyTrans = {
     amount:null,
@@ -16,22 +15,6 @@ const Page1 = ({userId, API, clearFunc}) => {
     date: formatDate(new Date()),
   };
 
-  // Handles incomeCounter and expenseCounter for transactins IDs
-  // useEffect(() => {
-  //   // page loading - get counters
-  //   const getCounters = async () => {
-  //     console.log('page loading - get counters');
-  //     try {
-  //       const getRes = await axios.get(`${API}/${userId}`);
-  //       // setIncomeCounter(getRes.data.incomeCounter);
-  //       // setExpenseCounter(getRes.data.expenseCounter);
-  //     } catch(err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   getCounters();
-  // }, []);
-
   const postTrans = async (trans) => {
     console.log('in page 1 postTrans. trans is:');
     console.log(trans);
@@ -39,19 +22,12 @@ const Page1 = ({userId, API, clearFunc}) => {
       const getRes = await axios.get(`${API}/${userId}`);
       const temp = getRes.data;
       temp[trans.type + 's'].push(trans);
-      // update counters
-      // trans.type === "income"? 
-      //   temp.incomeCounter = incomeCounter + 1 : 
-      //   temp.expenseCounter = expenseCounter + 1;
       await axios.put(`${API}/${userId}`, temp);
     } catch(err){
       console.log(err)
     }
 
     setAcceptMsg(`The ${trans.type} has successfully absorbed`)
-    // trans.type === "income"? 
-    //     // setIncomeCounter(incomeCounter + 1) : 
-    //     // setExpenseCounter(expenseCounter + 1);
 
       const timeOut = setTimeout(() => {
         setAcceptMsg('');
@@ -60,51 +36,41 @@ const Page1 = ({userId, API, clearFunc}) => {
   }
 
   const newIncome = () => {
-    // console.log('counters:')
-    // console.log(incomeCounter, expenseCounter);
-
     const emptyIncome = {...emptyTrans};
     emptyIncome.type = "income";
-    // emptyIncome.id = `income${incomeCounter}`;
-    // emptyIncome.id = `income${incomeCounter}`;
-    // console.log('emptyIncome.id');
-    // console.log(emptyIncome.id);
     return emptyIncome;
   }
   const newExpense = () => {
     const emptyExpense = {...emptyTrans};
     emptyExpense.type = "expense";
-    // emptyExpense.id = `expense${expenseCounter}`;
-    // emptyExpense.id = new Date().toString();
-    // console.log('emptyExpense.id');
-    // console.log(emptyExpense.id);
     return emptyExpense;
   }
 
   return (
-    <div>
-      Page1
+    <section className="page1 page">
       {
         (acceptMsg && 
         <p>{acceptMsg}</p>) 
         ||
-        <div>
+        <div className="page1__trans-forms">
           <TransactionForm
+            className=""
             trans = {newIncome()}
             title="New Income"
             func={postTrans}
-            btnTxt="+"
+            btnTxt={<i class="fas fa-plus"></i>}
           />
           <TransactionForm
+            className=""
             trans = {newExpense()}
             title="New Expense"
             func={postTrans}
-            btnTxt="+"
+            btnTxt={<i class="fas fa-plus"></i>}
           />
         </div>
       }
       
-    </div>
+    </section>
   );
 }
 export default Page1;

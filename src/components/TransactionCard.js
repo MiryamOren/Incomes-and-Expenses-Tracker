@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getKeyByValue } from '../helperFunctions'
+import '../css/transCard.css'
 const TransactionCard = ({trans, editFunc, deleteFunc}) => {
   // props: trans
   // title, id, amount, description, category, date, func
@@ -17,7 +18,7 @@ const TransactionCard = ({trans, editFunc, deleteFunc}) => {
   }                          
   
   return(
-    <tr>
+    <tr className="trans-card__tr">
       {card()}
       <td>
         <button

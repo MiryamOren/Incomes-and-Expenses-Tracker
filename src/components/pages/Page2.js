@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
+import '../../css/page2.css'
 import TransactionCard from '../TransactionCard'
 import TransactionForm from '../TransactionForm'
 import { capitalizeFirstLetter } from '../../helperFunctions'
@@ -62,12 +63,13 @@ const Page2 = ({userId, API, transProps}) => {
     await axios.put(`${API}/${userId}`, temp);
     setTransToEdit(null);
   }
-
-
   return (
-    <div>
-    
-    <p>Page 2 - History</p>
+    <div 
+      className="page page2"
+      // style={{background: `url(./static/app-logo.png) no-repeat center center/cover`}} 
+      style={{background: `url(./static/page2.jpg) no-repeat center center/cover}`}}
+    >
+    <h1>Transactions History</h1>
     <table>
       <thead>
       <tr>
@@ -91,6 +93,7 @@ const Page2 = ({userId, API, transProps}) => {
     </table>
       {transToEdit && 
       <TransactionForm 
+        className="page2_trans-form"
         trans={transToEdit}
         title={`Edit ${capitalizeFirstLetter(transToEdit.type)}`}
         btnTxt="confirm"
