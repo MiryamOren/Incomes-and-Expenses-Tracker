@@ -23,8 +23,6 @@ const TransactionCard = ({trans, editFunc, deleteFunc}) => {
         <button
           onClick={() => {
             trans.amount = Math.abs(trans.amount);
-            console.log('1 trans from card:')
-            console.log(trans)
             editFunc(trans)
           }}
         >edit</button>

@@ -5,6 +5,7 @@ import TransactionCard from '../TransactionCard'
 import TransactionForm from '../TransactionForm'
 import { capitalizeFirstLetter } from '../../helperFunctions'
 
+
 const Page2 = ({userId, API, transProps}) => {
 
   const [transactions, setTransactions] = useState([]);
@@ -38,12 +39,23 @@ const Page2 = ({userId, API, transProps}) => {
     const getRes = await axios.get(`${API}/${userId}`);
 
     const temp = getRes.data;
-    const origin = temp[newTrans.type + 's'].find(tr => tr.id === newTrans.id);
+    const origin = temp[newTrans.type + 's'].find(trans => trans.id === newTrans.id);
+    
     const indx = temp[newTrans.type + 's'].indexOf(origin);
 
     if (action === "edit"){
       temp[newTrans.type + 's'].splice(indx, 1, newTrans);
     } else if(action === "delete"){
+      // delete from screen
+      const tempTransactions = [...transactions];
+      console.log(tempTransactions);
+      console.log(newTrans);
+      // const transactionsOrigin = tempTransactions.find(trans => trans.id === newTrans.id);
+      
+      const transactionsIndx = tempTransactions.indexOf(newTrans);
+      console.log(transactionsIndx);
+      tempTransactions.splice(transactionsIndx, 1);
+      setTransactions(tempTransactions);
       temp[newTrans.type + 's'].splice(indx, 1);
     }
     
@@ -54,6 +66,7 @@ const Page2 = ({userId, API, transProps}) => {
 
   return (
     <div>
+    
     <p>Page 2 - History</p>
     <table>
       <thead>
