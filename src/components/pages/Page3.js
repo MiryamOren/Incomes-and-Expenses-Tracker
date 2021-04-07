@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
@@ -13,6 +14,11 @@ const Page3 = ({ API, userId }) => {
   const [chartRange, setChartRange] = useState(inputRange);
   const [dataType, setDataType] = useState('expenses');
   const [data, setData] = useState([]);
+
+  // is mobile?
+  const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  const isMobile = deviceWidth <= 480;
+
 
   useEffect(() => {
     const getData = async () => {
@@ -43,14 +49,9 @@ const Page3 = ({ API, userId }) => {
     }
   }, [userObj, chartRange, dataType]);
 
-  return (
-    <div className="page page3">
-    <h1>{`${dataType} from ${chartRange.startDate} to ${chartRange.endDate}`}</h1>
-    <div className="page3_type-btns">
-      <button onClick={() => setDataType('incomes')}>incomes</button>
-      <button onClick={() => setDataType('expenses')}>expenses</button>
-    </div>
-    <div className="page3_range-setters">
+  const rangeSetters = () => {
+    return(
+      <div className="page3_range-setters">
       <label>from</label>
       <input 
         type="date" 
@@ -68,11 +69,28 @@ const Page3 = ({ API, userId }) => {
       />
       <button onClick={() => setChartRange(inputRange)}>Show</button>
     </div>
+    );
+  };
+
+  const BarChartRender = () => {
+    return (
       <BarChart 
         data={data}
         keys={["amount"]} 
         indexBy="date"
       />
+    );
+  }
+  return (
+    <div className="page page3">
+      <h1>{`${dataType} from ${chartRange.startDate} to ${chartRange.endDate}`}</h1>
+      {isMobile? BarChartRender() : null}
+      <div className="page3_type-btns">
+        <button onClick={() => setDataType('incomes')}>incomes</button>
+        <button onClick={() => setDataType('expenses')}>expenses</button>
+      </div>
+      {rangeSetters()}
+      {!isMobile? BarChartRender() : null}
     </div>
   );
 }

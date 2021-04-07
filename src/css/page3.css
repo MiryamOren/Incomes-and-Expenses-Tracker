@@ -7,7 +7,7 @@
 .page3 h1{
   font-size: 1.5rem;
   text-align: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 .page3_type-btns{
   display: flex;
@@ -44,10 +44,15 @@
 .page3_range-setters input{
   border: none;
   border-radius: 10px;
-  padding: 0.5rem 1rem
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  height: 3rem;
 }
 .page3_range-setters label{
-  line-height: 2rem;
+  line-height: 2.5rem;
+}
+.page3_range-setters button{
+  margin: 0.5rem 0;
 }
 
 /* 
@@ -61,6 +66,13 @@
     justify-content: space-around;
     margin: 1rem auto;
     width: 100%;
+  }
+  .page3_range-setters{
+    display: flex;
+    flex-direction: column;
+  }
+  .page3_range-setters button{
+    align-self: center;
   }
 }
 

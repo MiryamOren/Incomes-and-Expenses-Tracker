@@ -1,3 +1,4 @@
+import './css/normalize.css v8.0.1.css'
 import './css/app.css'
 import React, { useState, useEffect, useRef } from 'react';
 import {

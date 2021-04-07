@@ -58,14 +58,14 @@ const Page1 = ({userId, API, clearFunc}) => {
             trans = {newIncome()}
             title="New Income"
             func={postTrans}
-            btnTxt={<i class="fas fa-plus"></i>}
+            btnTxt={<i className="fas fa-plus"></i>}
           />
           <TransactionForm
             className=""
             trans = {newExpense()}
             title="New Expense"
             func={postTrans}
-            btnTxt={<i class="fas fa-plus"></i>}
+            btnTxt={<i className="fas fa-plus"></i>}
           />
         </div>
       }
