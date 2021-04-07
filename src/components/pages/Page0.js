@@ -1,11 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React, { useState, useEffect, useRef } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React from 'react';
 import '../../css/page0.css'
 const Page0 = () => {
   const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;

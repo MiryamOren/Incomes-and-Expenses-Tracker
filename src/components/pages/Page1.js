@@ -9,9 +9,9 @@ const Page1 = ({userId, API, clearFunc}) => {
   const [acceptMsg, setAcceptMsg] = useState('');
 
   const emptyTrans = {
-    amount:null,
-    description:"",
-    category:"",
+    amount:'',
+    description:'',
+    category:'',
     date: formatDate(new Date()),
   };
 

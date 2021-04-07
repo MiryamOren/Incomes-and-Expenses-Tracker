@@ -1,0 +1,63 @@
+expenses
+      {
+        "amount": 400.25,
+        "description": "shufersal",
+        "category": "food",
+        "date": "2021-04-01",
+        "type": "expense",
+        "id": "Tue Apr 01 2021 16:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+      {
+        "amount": 200.03,
+        "description": "electric bill",
+        "category": "bills",
+        "date": "2021-04-02",
+        "type": "expense",
+        "id": "Tue Apr 02 2021 16:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+      {
+        "amount": 120.79,
+        "description": "water bill",
+        "category": "bills",
+        "date": "2021-04-02",
+        "type": "expense",
+        "id": "Tue Apr 02 2021 14:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+      {
+        "amount": 4000,
+        "description": "rent",
+        "category": "bills",
+        "date": "2021-04-05",
+        "type": "expense",
+        "id": "Tue Apr 05 2021 16:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+      {
+        "amount": 130.08,
+        "description": "grocery",
+        "category": "food",
+        "date": "2021-04-07",
+        "type": "expense",
+        "id": "Tue Apr 07 2021 16:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+
+incomes
+      {
+        "amount": 10000,
+        "description": "salary",
+        "category": "salary",
+        "date": "2021-04-07",
+        "type": "expense",
+        "id": "Tue Apr 01 2021 14:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+      {
+        "amount": 200,
+        "description": "birthday gift",
+        "category": "gift",
+        "date": "2021-04-07",
+        "type": "expense",
+        "id": "Tue Apr 05 2021 14:35:31 GMT+0300 (שעון ישראל (קיץ))"
+      },
+
+
+
+

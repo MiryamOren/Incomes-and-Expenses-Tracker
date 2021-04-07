@@ -12,16 +12,16 @@ const TransactionForm = ({trans, title, func, btnTxt, className}) => {
   console.log('in form. current transactin is:');
   console.log(transaction);
   const inputs = () => {
-    const trs = transactionProps.map(transProp => {
+    const trs = transactionProps.map((transProp, indx) => {
       return (
-        <React.Fragment key={transProp[0]}>
+        <React.Fragment key={indx}>
           <label>{transProp[0]}</label>
           <input
               type={transProp[1]} 
-              value={transProp[0] === 'amount'? Math.abs(transaction[transProp[0]]) : transaction[transProp[0]]}
+              value={transaction[transProp[0]]}
               onChange={(e) => {
-                const temp = transaction;
-                temp[transProp[0]] = transProp[0] === 'amount'? Math.abs(e.target.value): e.target.value;
+                const temp = {...transaction};
+                temp[transProp[0]] = e.target.value;
                 setTransaction({...temp});
               }}
             />
