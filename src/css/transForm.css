@@ -18,20 +18,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: turquoise; */
 }
 .trans-form_inputs input{
+  width: 100%;
   padding: 0.2rem 1rem;
   border: none;
   border-radius: 5px;
 }
+.trans-form_inputs label{
+  width: 100%;
+}
 
 .trans-form button{
-  margin-top: 1rem;
-  height: 3rem;
-  width: 3rem;
+  margin-top: 0.6rem;
+  height: 2.5rem;
+  width: 2.5rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.2rem;
   border-radius: 50%;
   background-color: transparent;
   border: #E98B40 3px solid;
@@ -49,4 +52,20 @@
   color: #f81a73;
   font-size: 0.8rem;
   /* visibility: hidden; */
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .trans-form{
+    height: fit-content;
+    width: 100%;
+    margin: 2rem 0;
+  }
+  .trans-form_inputs{
+    height: 17rem;
+  }
 }

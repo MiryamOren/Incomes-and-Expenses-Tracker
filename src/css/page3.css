@@ -1,10 +1,67 @@
 .page3{
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  
+  align-content: center;
 }
 .page3 h1{
-
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 2rem;
 }
-.page3_type-btns{}
-.page3_range-setters{}
+.page3_type-btns{
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem auto;
+  width: 45%;
+}
+.page3_type-btns button, 
+.page3_range-setters button{
+  height: fit-content;
+  width: fit-content;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 20px;
+  background-color: transparent;
+  border: #010A0A 2px solid;
+  color: #010A0A;
+  cursor: pointer;
+}
+
+.page3_type-btns button:hover,
+.page3_range-setters button:hover{
+  background-color:#010A0A;
+  color: #E98B40;
+}
+.page3_range-setters{
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto 2rem auto;
+  width: 100%;
+  max-width: 40rem;
+}
+.page3_range-setters input{
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem
+}
+.page3_range-setters label{
+  line-height: 2rem;
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .page3_type-btns{
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem auto;
+    width: 100%;
+  }
+}
+
+

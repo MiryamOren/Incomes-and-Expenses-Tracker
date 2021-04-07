@@ -17,7 +17,7 @@ nav{
 }
 nav ul{
   width:calc(50% - 4rem) ;
-  max-width: 25rem;
+  max-width: 15rem;
   list-style: none;
   display: flex;
   justify-content: space-around;
@@ -30,13 +30,17 @@ nav ul{
 }
 
 .nav__icon{
-  height: 3rem;
-  width: 3rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
-.nav__txt{
-  text-decoration: none;
-  margin-top: 5px;
-  font-size: 0.8rem;
-  text-align: center;
-  color:#D43178;
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  nav ul{
+    width: 75%;
+  }
 }
