@@ -16,6 +16,11 @@
   text-align: center;
   overflow-y: visible;
 }
+.page2 table thead{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  line-height: 2rem;
+}
 .page2_mobile-cards{
   width: 100%;
 }

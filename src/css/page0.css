@@ -13,6 +13,7 @@
 }
 .page0 h1{ 
   font-size: 4rem;
+  line-height: 5rem;
   text-align: center;
 }
 .page0_logo-icon{
@@ -21,7 +22,6 @@
 }
 
 .page0 button{
-  /* margin-top: 5rem; */
   font-size: 2rem;
   padding: 1rem 4rem;
   text-align: center;

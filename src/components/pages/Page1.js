@@ -27,7 +27,8 @@ const Page1 = ({userId, API, clearFunc}) => {
       console.log(err)
     }
 
-    setAcceptMsg(`The ${trans.type} has successfully absorbed`)
+    // setAcceptMsg(`${trans.type} has successfully absorbed`);
+    setAcceptMsg(<div className="page1_accept-msg">{trans.type} has successfully absorbed {<i className="far fa-thumbs-up"></i>}</div>);
 
       const timeOut = setTimeout(() => {
         setAcceptMsg('');

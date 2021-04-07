@@ -9,9 +9,10 @@ const BarChart = ({ data, keys, indexBy }) => {
   };
 
   return (
-    <div style={styles}>
-      <div style={{ height: "32vh" }}>
+    <div style={styles}> 
+      <div style={{ height: "30vh", }} className="bar-chart-container">
         <ResponsiveBar 
+          className="bar-chart"
           data={data} 
           keys={keys} 
           indexBy={indexBy}

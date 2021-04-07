@@ -70,7 +70,7 @@ const Page2 = ({userId, API, transProps}) => {
       <table>
         <thead>
           <tr>
-            {['amount', 'description', 'category', 'date'].map(prop => <th key={prop}>{prop}</th>)}
+            {['date', 'amount', 'description', 'category'].map(prop => <th key={prop}>{prop}</th>)}
             <th></th>
             <th></th>
           </tr>
@@ -105,7 +105,6 @@ const Page2 = ({userId, API, transProps}) => {
   return (
     <div 
       className="page page2"
-      style={{background: `url(./static/page2.jpg) no-repeat center center/cover`}}
     >
       <h1>Transactions History</h1>
       {isMobile? mobileTransCards() : desktopTransCards()}

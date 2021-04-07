@@ -1,3 +1,8 @@
+.page1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .page1__trans-forms{
   height: 100%;
   width: 100%;
@@ -7,6 +12,9 @@
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
+}
+.page1_accept-msg{
+  font-size: 2rem;
 }
 
 /* 

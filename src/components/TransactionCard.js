@@ -6,7 +6,7 @@ const TransactionCard = ({trans, editFunc, deleteFunc}) => {
   // title, id, amount, description, category, date, func
 
   const card = () => {
-    const tds = ['amount', 'description', 'category', 'date'].map(prop => {
+    const tds = ['date', 'amount', 'description', 'category'].map(prop => {
       if (prop === 'amount'){
         const txt = trans.type === 'income' ? '' : '-';
         return <td key={prop}>{`${txt}${trans[prop]}`}</td>

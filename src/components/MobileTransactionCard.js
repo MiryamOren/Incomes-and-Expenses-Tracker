@@ -7,7 +7,7 @@ const MobileTransactionCard = ({trans, editFunc, deleteFunc}) => {
 
   const card = () => {
     trans.amount = trans.type === 'income' ? trans.amount : Math.abs(trans.amount) * (-1);
-    const divs = ['amount', 'description', 'category', 'date'].map(prop => {
+    const divs = ['date', 'amount', 'description', 'category'].map(prop => {
       if (prop === 'date'){
         const date = trans[prop].toString().split('-').reverse().join('/');
         return <div key={prop}>{`date: ${date}`}</div>

@@ -54,7 +54,12 @@
 .page3_range-setters button{
   margin: 0.5rem 0;
 }
-
+.bar-chart-container::-webkit-scrollbar {
+  display: none;
+}
+.bar-chart::-webkit-scrollbar {
+  display: none;
+}
 /* 
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
