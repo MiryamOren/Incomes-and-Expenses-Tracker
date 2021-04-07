@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import '../../css/page2.css'
@@ -14,11 +15,11 @@ const Page2 = ({userId, API, transProps}) => {
 
   const [transactions, setTransactions] = useState([]);
   const [transToEdit, setTransToEdit] = useState(false);
-
   // is mobile?
-  const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-  const isMobile = deviceWidth <= 480;
-  // const isMobile = true;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  window.addEventListener('resize', () =>{
+    setIsMobile(window.innerWidth <= 600);
+  } );
 
   useEffect(() => {
     async function getTransactions(){
@@ -103,9 +104,7 @@ const Page2 = ({userId, API, transProps}) => {
     );
   }
   return (
-    <div 
-      className="page page2"
-    >
+    <div className="page page2">
       <h1>Transactions History</h1>
       {isMobile? mobileTransCards() : desktopTransCards()}
       {transToEdit && 

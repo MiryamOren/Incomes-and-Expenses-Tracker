@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './css/normalize.css v8.0.1.css'
 import './css/app.css'
 import React, { useState, useEffect, useRef } from 'react';
@@ -21,7 +22,6 @@ const App = () => {
   const userId = 1;
   const [toClear, setToClear] = useState([]);
   const clearFunction = () => {
-    console.log('im in clear function, ')
     toClear.forEach(varToCancel => {
       (varToCancel.func)(varToCancel.var);
     });
@@ -48,12 +48,8 @@ const App = () => {
               API={API}
               userId={userId}
               clearFunc={(varToCancel) => {
-                console.log('--------im im clearFunc------\n. clear arr is:');
-                console.log(toClear);
                 const temp = [...toClear];
                 temp.push(varToCancel)
-                console.log('temp is:')
-                console.log(temp);
                 setToClear(temp)
               }}
             />
@@ -77,11 +73,11 @@ const App = () => {
         </Switch>
       </div>
       <div className="icons-author">
-        Icons made by  
-        <a target="_blank" rel="noreferrer" href="https://www.flaticon.com/authors/payungkead" title="Payungkead"> Payungkead </a> from  
-        <a target="_blank" rel="noreferrer" href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com.</a>
+        Icons made by{'  '}
+        <a target="_blank" rel="noreferrer" href="https://www.flaticon.com/authors/payungkead" title="Payungkead">Payungkead</a>{'  '}from{'  '} 
         {'  '}
-        <a target="_blank" rel="noreferrer" href="https://www.pexels.com/photo/silhouette-of-mountains-1323550/">Photo by Simon Berger from Pexels </a>
+        <a target="_blank" rel="noreferrer" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com.</a>
+        
       </div>
     </Router>
     

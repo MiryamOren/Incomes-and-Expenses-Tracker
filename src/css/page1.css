@@ -14,7 +14,10 @@
   background-color: transparent;
 }
 .page1_accept-msg{
+  height: 100%;
+  width: 100%;
   font-size: 2rem;
+  text-align: center;
 }
 
 /* 
@@ -22,7 +25,7 @@
   ##Screen = B/w 320px to 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 600px) {
   
   .page1__trans-forms{
     flex-direction: column;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/transForm.css'
 const TransactionForm = ({trans, title, func, btnTxt, className}) => {
@@ -7,10 +8,6 @@ const TransactionForm = ({trans, title, func, btnTxt, className}) => {
                             ['description', 'text'],
                             ['category', 'text'],
                             ['date', 'date']];
-  console.log('transaction form got: ');
-  console.log(trans);
-  console.log('in form. current transactin is:');
-  console.log(transaction);
   const inputs = () => {
     const trs = transactionProps.map((transProp, indx) => {
       return (

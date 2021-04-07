@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 
 const BarChart = ({ data, keys, indexBy }) => {
-  console.log(data);
   const styles = {
     fontFamily: "sans-serif",
     textAlign: "center"

@@ -1,9 +1,13 @@
 /* eslint-disable no-restricted-globals */
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect, useRef } from 'react';
 import '../../css/page0.css'
 const Page0 = () => {
   const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-  const isMobile = deviceWidth <= 900;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+  window.addEventListener('resize', () =>{
+    setIsMobile(window.innerWidth <= 900);
+  } );
 
   return (
     <div className="page page0">

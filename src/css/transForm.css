@@ -60,7 +60,7 @@
   ##Screen = B/w 320px to 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 600px) {
   .trans-form{
     height: fit-content;
     width: 100%;

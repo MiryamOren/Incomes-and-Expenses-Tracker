@@ -4,11 +4,12 @@
   align-items: center;
   height: fit-content;
   overflow-y: visible;
-  min-height: calc(100vh - calc(3rem + 5rem));
+  min-height: calc(100vh - calc(2rem + 5rem));
   position: relative;
 }
 .page2 h1{
   padding-bottom: 2rem;
+  text-align: center;
 }
 .page2 table{
   width: 100%;
@@ -27,18 +28,22 @@
 .form-container{
   height: 100%;
   width: 100%;
-  background-color: #010a0a80;
+  padding-top: 2rem;
+  background-color: #010a0ade;
   position: absolute;
   top:0;
   left:0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.page2 .page2_trans-form{
+.page2 .form-container .page2_trans-form{
   height: 90%;
   max-width: 20rem;
+  height: 29rem;
+  background-color: #E98B40;
+  color: #010A0A;
 }
 
 .page2 .page2_trans-form button{
@@ -50,12 +55,12 @@
   text-align: center;
   border-radius: 20px;
   background-color: transparent;
-  border: #E98B40 2px solid;
-  color: #E98B40;
+  border: #010A0A 2px solid;
+  color: #010A0A;
   cursor: pointer;
 }
 
 .trans-form button:hover{
-  background-color:#E98B40;
-  color: #010A0A;
+  background-color:#010A0A;
+  color: #E98B40;
 }

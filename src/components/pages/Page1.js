@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import TransactionForm from '../TransactionForm'
@@ -16,8 +17,6 @@ const Page1 = ({userId, API, clearFunc}) => {
   };
 
   const postTrans = async (trans) => {
-    console.log('in page 1 postTrans. trans is:');
-    console.log(trans);
     try{
       const getRes = await axios.get(`${API}/${userId}`);
       const temp = getRes.data;
@@ -28,7 +27,7 @@ const Page1 = ({userId, API, clearFunc}) => {
     }
 
     // setAcceptMsg(`${trans.type} has successfully absorbed`);
-    setAcceptMsg(<div className="page1_accept-msg">{trans.type} has successfully absorbed {<i className="far fa-thumbs-up"></i>}</div>);
+    setAcceptMsg(<span className="page1_accept-msg">{trans.type} has successfully absorbed {<i className="far fa-thumbs-up"></i>}</span>);
 
       const timeOut = setTimeout(() => {
         setAcceptMsg('');

@@ -17,7 +17,10 @@ const Page3 = ({ API, userId }) => {
 
   // is mobile?
   const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-  const isMobile = deviceWidth <= 480;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
+  window.addEventListener('resize', () =>{
+    setIsMobile(window.innerWidth <= 650);
+  } );
 
 
   useEffect(() => {
@@ -43,8 +46,6 @@ const Page3 = ({ API, userId }) => {
           .reduce((sum, currentTrans) => sum + currentTrans.amount, 0);
         return {amount: sum === 0? null: sum, date: date.toDateString()}
       });
-      console.log('datesWithData');
-      console.log(datesWithData);
       setData(datesWithData.filter(obj => obj.amount))
     }
   }, [userObj, chartRange, dataType]);
