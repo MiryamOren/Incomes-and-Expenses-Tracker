@@ -70,10 +70,12 @@
   .page3_range-setters{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .page3_range-setters button{
-    align-self: center;
+    margin-top: 1rem;
   }
+
 }
 
 
