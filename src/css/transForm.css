@@ -67,6 +67,7 @@
     margin: 2rem 0;
   }
   .trans-form_inputs{
-    height: 17rem;
+    height: 20rem;
+    width: calc(100% - 3rem);
   }
 }

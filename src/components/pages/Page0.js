@@ -27,7 +27,10 @@ const Page2 = ({API}) => {
   };
 
   return (
-    <div>
+    <div className="page page0">
+      <div>
+      
+      </div>
       <button onClick={handelPost}>post</button>
       <button onClick={handelGet}>get</button>
     </div>
