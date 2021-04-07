@@ -66,6 +66,7 @@
     width: 100%;
     margin: 2rem 0;
   }
+  .trans-form_inputs,
   .trans-form_inputs{
     height: 20rem;
     width: calc(100% - 3rem);
