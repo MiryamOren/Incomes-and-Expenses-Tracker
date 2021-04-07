@@ -8,6 +8,8 @@ import {
   Link
 } 
 from "react-router-dom";
+
+import Page0 from './components/pages/Page0'
 import Page1 from './components/pages/Page1'
 import Page2 from './components/pages/Page2'
 import Page3 from './components/pages/Page3'
@@ -37,6 +39,11 @@ const App = () => {
         <Switch>
            
         <Route path="/" exact>
+            <Page0 
+            />
+        </Route>
+
+        <Route path="/home" exact>
             <Page1 
               API={API}
               userId={userId}

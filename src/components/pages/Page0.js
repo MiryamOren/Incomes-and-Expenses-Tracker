@@ -1,40 +1,38 @@
+/* eslint-disable no-restricted-globals */
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios'
-const Page2 = ({API}) => {
-  const [id, setId] = useState(null)
-  const handelPost = async () => {
-    const student = {
-      username: 'username',
-      password: 'password',
-      incomes: [],
-      expenses: [],
-    }
-    try{
-      const response = await axios.post(API, student);
-      console.log(response.data);
-      setId(response.data.id);
-    } catch(err){
-      console.log(err)
-    }
-  };
-  const handelGet = async () => {
-    try{
-      const response = await axios.get(`${API}/${id}`);
-      console.log(response.data);
-    } catch(err){
-      console.log(err)
-    }
-  };
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import '../../css/page0.css'
+const Page0 = () => {
+  const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  const isMobile = deviceWidth <= 900;
 
   return (
     <div className="page page0">
-      <div>
-      
+      <div className="page0_heading">
+        <h1>Start to Save Money</h1>
+        {!isMobile &&
+          <div 
+            className="page0_logo-icon" 
+            style={{background: `url(./static/app-logo-black.png) no-repeat center center/cover`}}
+          ></div>}
       </div>
-      <button onClick={handelPost}>post</button>
-      <button onClick={handelGet}>get</button>
+      <a href="/home">
+          {isMobile? 
+            <div 
+              className="page0_logo-icon" 
+              style={{background: `url(./static/app-logo-black.png) no-repeat center center/cover`}}
+            ></div> :
+            <button>Start</button>
+          }
+      </a>
+      
     </div>
   );
 }
 
-export default Page2;
+export default Page0;

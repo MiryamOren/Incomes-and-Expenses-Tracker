@@ -1,0 +1,38 @@
+.page0{
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: space-around;
+  align-items: center;
+}
+.page0_heading{
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page0 h1{ 
+  font-size: 4rem;
+  text-align: center;
+}
+.page0_logo-icon{
+  height: 8rem;
+  width: 8rem;
+}
+
+.page0 button{
+  /* margin-top: 5rem; */
+  font-size: 2rem;
+  padding: 1rem 4rem;
+  text-align: center;
+  border-radius: 50px;
+  background-color: transparent;
+  border: #010A0A 2px solid;
+  color: #010A0A;
+  cursor: pointer;
+}
+
+.page0 button:hover{
+  background-color:#010A0A;
+  color: #E98B40;
+}

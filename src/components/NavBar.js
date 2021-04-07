@@ -17,12 +17,11 @@ const NavBar = ({clearFunction}) => {
       </Link>
       <ul>
         <li key={1} className="nav__new-trans-link">
-          <Link className="nav__link" onClick={clearFunction} to="/">
+          <Link className="nav__link" onClick={clearFunction} to="/home">
             <div 
               className="nav__icon"
               style={{background: `url(./static/plus.png) no-repeat center center/cover`}}
             ></div>
-            {/*<label className="nav__txt" style={{textDecoration: 'none'}}>New <br/>Transaction</label>*/}
           </Link>
         </li>
         <li key={2} className="nav__records-link">
@@ -31,7 +30,6 @@ const NavBar = ({clearFunction}) => {
               className="nav__icon"
               style={{background: `url(./static/records2.png) no-repeat center center/cover`}}
             ></div>
-            {/*<p className="nav__txt">Records</p>*/}
           </Link>
         </li>
         <li key={3} className="nav__analize">
@@ -40,7 +38,6 @@ const NavBar = ({clearFunction}) => {
               className="nav__icon"
               style={{background: `url(./static/graph.png) no-repeat center center/cover`}}
             ></div>
-            {/*<p className="nav__txt">Analyze</p>*/}
           </Link>
         </li>
       </ul>
