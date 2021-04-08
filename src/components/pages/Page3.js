@@ -10,7 +10,7 @@ import {formatDate, datesBetween} from '../../helperFunctions'
 const Page3 = ({ API, userId }) => {
   const [userObj, setUserObj] = useState(null);
   const [inputRange, setInputRange] = 
-    useState({startDate: '2021-03-05', endDate: formatDate(new Date())});
+    useState({startDate: '2021-04-01', endDate: formatDate(new Date())});
   const [chartRange, setChartRange] = useState(inputRange);
   const [dataType, setDataType] = useState('expenses');
   const [data, setData] = useState([]);
