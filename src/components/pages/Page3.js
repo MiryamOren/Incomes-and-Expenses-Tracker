@@ -82,9 +82,14 @@ const Page3 = ({ API, userId }) => {
       />
     );
   }
+  const titleRender = () => {
+    const startDate = chartRange.startDate.toString().split('-').reverse().join('/');
+    const endDate = chartRange.endDate.toString().split('-').reverse().join('/');
+    return <h1>{`${dataType} from ${startDate} to ${endDate}`}</h1>
+  }
   return (
     <div className="page page3">
-      <h1>{`${dataType} from ${chartRange.startDate} to ${chartRange.endDate}`}</h1>
+      {titleRender()}
       {isMobile? BarChartRender() : null}
       <div className="page3_type-btns">
         <button onClick={() => setDataType('incomes')}>incomes</button>
