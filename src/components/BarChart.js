@@ -61,6 +61,16 @@ const BarChart = ({ data, keys, indexBy }) => {
                 ]
             }
         ]}
+        tooltip={({data}) => {
+          return (
+            <strong >
+              {data.date}
+              <br/>
+              {data.description.map((line, indx) => <React.Fragment key={indx}>{line}<br/></React.Fragment>)}
+            </strong>
+          );
+        }
+        }
         />
       </div>
   </div>

@@ -44,7 +44,11 @@ const Page3 = ({ API, userId }) => {
         const sum = filteredTransactions
           .filter(trans => Date.parse(trans.date) === Date.parse(date))
           .reduce((sum, currentTrans) => sum + currentTrans.amount, 0);
-        return {amount: sum === 0? null: sum, date: date.toDateString()}
+          const txt = [];
+          filteredTransactions
+          .filter(trans => Date.parse(trans.date) === Date.parse(date))
+          .forEach(currentTrans => txt.push(`${currentTrans.description} : ${currentTrans.amount}`));
+        return {amount: sum === 0? null: sum, date: date.toDateString(), description: txt}
       });
       setData(datesWithData.filter(obj => obj.amount))
     }
