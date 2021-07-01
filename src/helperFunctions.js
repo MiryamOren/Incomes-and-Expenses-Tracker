@@ -21,7 +21,7 @@ function capitalizeFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-var datesBetween = function(startDate, endDate) {
+const datesBetween = function(startDate, endDate) {
     var dates = [],
         currentDate = startDate,
         addDays = function(days) {

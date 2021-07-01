@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 
 const BarChart = ({ data, keys, indexBy }) => {
+  console.log(data)
   const styles = {
     fontFamily: "sans-serif",
     textAlign: "center"
@@ -13,7 +14,7 @@ const BarChart = ({ data, keys, indexBy }) => {
       <div style={{ height: "30vh", }} className="bar-chart-container">
         <ResponsiveBar 
           className="bar-chart"
-          data={data} 
+          data={data.map(el => {return {...el, amount: parseFloat(el.amount)}})} 
           keys={keys} 
           indexBy={indexBy}
           margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
